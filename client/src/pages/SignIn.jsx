@@ -61,7 +61,7 @@ export default function SignIn() {
 	// }console.log(formData);
 	return (
 		<div className=" p-3 max-w-lg mx-auto">
-			<h1 className="text-3xl text-center font-semibold my-7">Sign In</h1>
+			<h1 className="text-3xl mt-20 text-center font-semibold my-7">Sign In</h1>
 
 			<form className="flex flex-col gap-4" onSubmit={handleSubmit}>
 				<input
@@ -86,7 +86,7 @@ export default function SignIn() {
 					{loading ? "Loading" : "Sign In"}{" "}
 					{/* if loading will not show signup */}
 				</button>
-				<OAuth />
+				{/*<OAuth />*/}
 			</form>
 
 			<div className="flex gap-2 mt-4">
