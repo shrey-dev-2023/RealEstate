@@ -5,6 +5,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
 import { Navigation } from "swiper/modules";
 import "swiper/css/bundle";
+import 'animate.css';
+
+// import 'swiper/swiper-bundle.min.css';
 import ListingItem from "../components/ListingItem";
 
 export default function Home() {
@@ -49,113 +52,115 @@ export default function Home() {
 	}, []);
 
 	return (
-		<div className="">
-			{/* top */}
-			<div className="flex flex-col gap-6 py-28 px-3 max-w-6xl mx-auto">
-				<h1 className="text-blue-800 font-bold text-3xl lg:text-6xl">
-					Find your Next <span className="text-blue-600">Perfect</span> place
-					with ease
-				</h1>
-				<br />
-				<div className="text-slate-700 text-xs sm:text-sm ">
-					Sahand Estate is the best place to find your next perfect place to
-					live.
-					<br />
-					We have a wide range of properties for you to choose from.
-				</div>
-				<Link
-					className="text-xs sm:text-sm font-bold text-emerald-600 hover:underline"
-					to={"/search"}
-				>
-					Let's get started...
-				</Link>
-			</div>
+		<main className="bg-gray-100 min-h-screen">
+		<div className="flex flex-col gap-6 py-28 px-3 max-w-6xl mx-auto animate__animated animate__fadeInDown"> {/* Added animate__animated and animate__fadeInDown */}
+  <h1 className="text-blue-800 font-bold text-3xl lg:text-6xl">
+    <span className="animate__animated animate__bounceInLeft">Find your Next</span> {/* Added animate__animated and animate__bounceInLeft */}
+    <span className="text-blue-600 animate__animated animate__bounceInRight">Perfect</span> {/* Added animate__animated and animate__bounceInRight */}
+    <span className="animate__animated animate__bounceInUp">place with ease</span> {/* Added animate__animated and animate__bounceInUp */}
+  </h1>
+  <div className="bg-white rounded-lg shadow-lg flex flex-col justify-between h-full">
+  <div className="p-8">
+    <p className="text-gray-800 text-lg md:text-xl">
+      Welcome to Sahand Estate - your gateway to discovering the perfect home. With our diverse range of properties, finding your ideal living space has never been easier.
+    </p>
+    <div className="mt-6 text-gray-800">
+      <p className="text-lg md:text-xl">
+        Whether you're searching for a cozy apartment in the heart of the city, a tranquil suburban retreat, or a luxurious estate with breathtaking views, we have something for everyone.
+      </p>
+      <p className="text-lg md:text-xl mt-4">
+        Our dedicated team is here to assist you every step of the way, ensuring that your journey to finding your dream home is seamless and enjoyable.
+      </p>
+    </div>
+  </div>
+  <div className="p-8">
+    <Link
+      to="/search"
+      className="bg-emerald-500 text-white font-bold py-2 px-6 rounded-lg shadow-md hover:bg-emerald-600 hover:shadow-lg transition duration-300 ease-in-out text-center"
+    >
+      <span className="animate__animated animate__pulse">Let's get started...</span>
+    </Link>
+  </div>
+</div>
 
-			{/* swiper */}
-			<Swiper navigation>
-				{offerListings &&
-					offerListings.length > 0 &&
-					offerListings.map((listing) => (
-						<SwiperSlide key={offerListings._id}>
-							<div
-								style={{
-									background: `url(${listing.imageUrls[0]}) center no-repeat`,
-									backgroundSize: "cover",
-								}}
-								className="h-[500px]"
-								key={offerListings._id}
-							></div>
-						</SwiperSlide>
-					))}
-			</Swiper>
-
-			{/* listing cards */}
-			<div className="max-w-full mx-auto p-3 flex flex-col gap-8 my-10">
-				{offerListings && offerListings.length > 0 && (
-					<div className="" key={offerListings?._id}>
-						<div className="">
-							<h2 className="text-blue-800 font-bold text-3xl lg:text-6xl">
-								Recent Offers
-							</h2>
-							<Link
-								className="text-emerald-700 hover:underline"
-								to={"/search?offer=true"}
-							>
-								Show More Offers
-							</Link>
-						</div>
-						<div className="flex flex-wrap gap-4 ">
-							{offerListings.map((listing) => (
-								<ListingItem listing={listing} key={listing._id} />
-							))}
-						</div>
-					</div>
-				)}
-
-				{/* rent */}
-				{rentListings && rentListings.length > 0 && (
-					<div className="">
-						<div className="">
-							<h2 className="text-blue-800 font-bold text-3xl lg:text-6xl">
-								Recent Rent Locations
-							</h2>
-							<Link
-								className="text-emerald-700 hover:underline"
-								to={"/search?offer=true"}
-							>
-								Show More Rent Locations
-							</Link>
-						</div>
-						<div className="flex flex-wrap gap-4 ">
-							{rentListings.map((listing) => (
-								<ListingItem listing={listing} key={listing._id} />
-							))}
-						</div>
-					</div>
-				)}
-
-				{/* sale */}
-				{saleListings && saleListings.length > 0 && (
-					<div className="">
-						<div className="">
-							<h2 className="text-blue-800 font-bold text-3xl lg:text-6xl">
-								Recent Sale Locations
-							</h2>
-							<Link
-								className="text-emerald-700 hover:underline"
-								to={"/search?offer=true"}
-							>
-								Show More Sale Locations
-							</Link>
-						</div>
-						<div className="flex flex-wrap gap-4 ">
-							{saleListings.map((listing) => (
-								<ListingItem listing={listing} key={listing._id} />
-							))}
-						</div>
-					</div>
-				)}
-			</div>
 		</div>
+  
+		<Swiper navigation>
+		  {offerListings && offerListings.length > 0 &&
+			offerListings.map((listing) => (
+			  <SwiperSlide key={listing._id}>
+				<div
+				  style={{
+					background: `url(${listing.imageUrls[0]}) center no-repeat`,
+					backgroundSize: "cover",
+				  }}
+				  className="h-[500px]"
+				></div>
+			  </SwiperSlide>
+			))}
+		</Swiper>
+  
+		<div className="max-w-full mx-auto p-6 flex flex-col gap-8 my-10">
+  {offerListings && offerListings.length > 0 && (
+    <div className="" key={offerListings?._id}>
+      <div className="flex justify-between items-center">
+        <h2 className="text-blue-800 font-bold text-3xl lg:text-5xl">Recent Offers</h2>
+        <Link
+          className="text-emerald-700 hover:underline text-base sm:text-lg"
+          to="/search?offer=true"
+        >
+          Show More Offers
+        </Link>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {offerListings.map((listing) => (
+          <ListingItem listing={listing} key={listing._id} />
+        ))}
+      </div>
+    </div>
+  )}
+
+  {/* Rent */}
+  {rentListings && rentListings.length > 0 && (
+    <div className="">
+      <div className="flex justify-between items-center">
+        <h2 className="text-blue-800 font-bold text-3xl lg:text-5xl">Recent Rent Locations</h2>
+        <Link
+          className="text-emerald-700 hover:underline text-base sm:text-lg"
+          to="/search?offer=true"
+        >
+          Show More Rent Locations
+        </Link>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {rentListings.map((listing) => (
+          <ListingItem listing={listing} key={listing._id} />
+        ))}
+      </div>
+    </div>
+  )}
+
+  {/* Sale */}
+  {saleListings && saleListings.length > 0 && (
+    <div className="">
+      <div className="flex justify-between items-center">
+        <h2 className="text-blue-800 font-bold text-3xl lg:text-5xl">Recent Sale Locations</h2>
+        <Link
+          className="text-emerald-700 hover:underline text-base sm:text-lg"
+          to="/search?offer=true"
+        >
+          Show More Sale Locations
+        </Link>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {saleListings.map((listing) => (
+          <ListingItem listing={listing} key={listing._id} />
+        ))}
+      </div>
+    </div>
+  )}
+</div>
+
+	  </main>
 	);
 }

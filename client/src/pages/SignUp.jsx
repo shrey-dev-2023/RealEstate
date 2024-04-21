@@ -46,49 +46,49 @@ export default function SignUp() {
 	};
 	// }console.log(formData);
 	return (
-		<div className=" p-3 max-w-lg mx-auto">
-			<h1 className="text-3xl mt-20 text-center font-semibold my-7">Sign Up</h1>
+		<div className="p-5 max-w-lg mx-auto mt-32 bg-white rounded-lg shadow-md">
+  <h1 className="text-3xl mb-6 text-center font-semibold">Sign Up</h1>
 
-			<form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-				<input
-					type="text"
-					placeholder="User Name"
-					className="border p-3 rounded-lg"
-					id="username"
-					onChange={handleChange}
-				/>
-				<input
-					type="email"
-					placeholder="Email"
-					className="border p-3 rounded-lg"
-					id="email"
-					onChange={handleChange}
-				/>
-				<input
-					type="password"
-					placeholder="Password"
-					className="border p-3 rounded-lg"
-					id="password"
-					onChange={handleChange}
-				/>
+  <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+    <input
+      type="text"
+      placeholder="Username"
+      className="border-b-2 border-blue-900 p-3 rounded-lg focus:outline-none focus:border-blue-500"
+      id="username"
+      onChange={handleChange}
+    />
+    <input
+      type="email"
+      placeholder="Email"
+      className="border-b-2 border-blue-900 p-3 rounded-lg focus:outline-none focus:border-blue-500"
+      id="email"
+      onChange={handleChange}
+    />
+    <input
+      type="password"
+      placeholder="Password"
+      className="border-b-2 border-blue-900 p-3 rounded-lg focus:outline-none focus:border-blue-500"
+      id="password"
+      onChange={handleChange}
+    />
 
-				<button
-					disabled={loading}
-					className="bg-blue-900 text-white p-3 rounded-lg uppercase hover:opacity-90"
-				>
-					{loading ? "Loading" : "Sign up"}{" "}
-					{/* if loading will not show signup */}
-				</button>
-				{/*<OAuth />*/}
-			</form>
-			<div className="flex gap-2 mt-4">
-				<p>Have an account? </p>
-				<Link to={"/sign-in"}>
-					<span className="text-blue-600"> Sign In</span>
-				</Link>
-			</div>
-			{error && <p className="text-red-500 mt-5">{error}</p>}
-			<p>(dummy account: email : test@test.com password : test@test.com)</p>
-		</div>
+    <button
+      disabled={loading}
+      className="bg-blue-900 text-white p-3 rounded-lg uppercase hover:bg-blue-800 focus:outline-none transition duration-300"
+    >
+      {loading ? "Loading..." : "Sign Up"}
+    </button>
+  </form>
+
+  <div className="flex items-center justify-center mt-4">
+    <p className="mr-2">Already have an account?</p>
+    <Link to="/sign-in" className="text-blue-600 hover:underline">
+      Sign In
+    </Link>
+  </div>
+
+  {error && <p className="text-red-500 mt-5">{error}</p>}
+</div>
+
 	);
 }
